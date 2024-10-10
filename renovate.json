@@ -1,15 +1,14 @@
 {
     "extends": ["config:base"],
-    "terraform": {
-      "enabled": true
-    },
-    "packageRules": [
+    "regexManagers": [
       {
-        "managers": ["terraform"],
-        "matchPackageNames": ["hashicorp/random"],
-        "matchFiles": ["config.tm.hcl"],
-        "versioning": "hashicorp",
-        "enabled": true
+        "fileMatch": ["^config\\.tm\\.hcl$"],
+        "matchStrings": [
+          "version\\s*=\\s*\"(?<currentValue>[^\"]+)\"",
+          "source\\s*=\\s*\"(?<datasource>hashicorp/.+)\""
+        ],
+        "datasourceTemplate": "terraform-provider",
+        "versioningTemplate": "hashicorp"
       }
     ]
   }

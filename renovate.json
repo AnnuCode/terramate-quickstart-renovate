@@ -1,0 +1,16 @@
+{
+    "extends": ["config:base"],
+    "terraform": {
+      "enabled": true
+    },
+    "packageRules": [
+      {
+        "managers": ["terraform"],
+        "matchPackageNames": ["hashicorp/random"],
+        "matchFiles": ["config.tm.hcl"],
+        "versioning": "hashicorp",
+        "enabled": true
+      }
+    ]
+  }
+  
